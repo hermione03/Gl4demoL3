@@ -83,13 +83,13 @@ static void draw(void)
     gl4duSendMatrices();
 
     // Envoi des données d'amplitude au shader
-    // float currentSample = ( GLfloat ) _hauteurs[currentSampleIndex];
-    float currentSample = 0;
-    for (int i = 0; i < ECHANTILLONS; i++)
-    {
-        currentSample += _hauteurs[i];
-    }
-    currentSample /= ECHANTILLONS;
+    float currentSample = (GLfloat)_hauteurs[currentSampleIndex];
+    // float currentSample = 0;
+    // for (int i = 0; i < ECHANTILLONS; i++)
+    // {
+    //     currentSample += _hauteurs[i];
+    // }
+    // currentSample /= ECHANTILLONS;
     _amplitude_sonore = glGetUniformLocation(_pId, "amplitudeSon");
     printf("currentSample: %f\n", currentSample);
     glUniform1f(_amplitude_sonore, currentSample);
