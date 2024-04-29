@@ -119,7 +119,7 @@ static void initText(GLuint *ptId, const char *text)
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     }
     /* chargement de la font */
-    if (!(font = TTF_OpenFont("Schrödinger.ttf", 64)))
+    if (!(font = TTF_OpenFont("DejaVuSans-Bold.ttf", 128)))
     {
         fprintf(stderr, "TTF_OpenFont: %s\n", TTF_GetError());
         return;
