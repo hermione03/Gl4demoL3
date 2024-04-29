@@ -1,11 +1,11 @@
 Model Information:
 * title:	Police Car
-* source:	https://sketchfab.com/3d-models/police-car-0de968b9c106444bb7031bcfecd53799
-* author:	dhiren-sah (https://sketchfab.com/dhiren-sah)
+* source:	https://sketchfab.com/3d-models/police-car-1de73590ef4e4e37a6a83ab9f29162e3
+* author:	AnnPiskacov (https://sketchfab.com/AndreaPiskacova)
 
 Model License:
 * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 * requirements:	Author must be credited. Commercial use is allowed.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "Police Car" (https://sketchfab.com/3d-models/police-car-0de968b9c106444bb7031bcfecd53799) by dhiren-sah (https://sketchfab.com/dhiren-sah) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "Police Car" (https://sketchfab.com/3d-models/police-car-1de73590ef4e4e37a6a83ab9f29162e3) by AnnPiskacov (https://sketchfab.com/AndreaPiskacova) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
