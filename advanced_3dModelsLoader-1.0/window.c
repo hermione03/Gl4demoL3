@@ -44,7 +44,7 @@ void init(void)
   /* charger 3 modèles différents */
   _id_modele[0] = assimpGenScene("models/soccer/soccerball.obj");
   // _id_modele[1] = assimpGenScene("models/nixanz.3ds");
-  _id_modele[1] = assimpGenScene("models/nixanz.3ds");
+  _id_modele[1] = assimpGenScene("models/police_car/scene.gltf");
   // _id_modele[2] = assimpGenScene("models/balloon/balloon_low.obj");
   _id_modele[2] = assimpGenScene("models/Snapshooter/scene.gltf");
 
