@@ -12,11 +12,13 @@
 #include "assimp.h"
 
 /*!\brief opened window width */
-static int _windowWidth = 600;
+static int _windowWidth = 1280;
 /*!\brief opened window height */
-static int _windowHeight = 800;
+static int _windowHeight = 900;
 /*!\brief GLSL program Id */
 static GLuint _pId = 0;
+
+// static GLfloat _dim[] = {1280, 900};
 
 /*!\brief identifiant de modèles générés à partir de fichiers 3D (3dsmax, obj, ...) */
 static GLuint _id_modele[2] = {0};
