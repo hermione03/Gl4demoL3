@@ -80,7 +80,7 @@ void resize(int w, int h)
 void draw(void)
 {
   int i;
-  const int nb_modeles = sizeof _id_modele / sizeof *_id_modele, total = 12;
+  const int nb_modeles = sizeof _id_modele / sizeof *_id_modele, total = 3;
   static GLfloat angle = 0.0f;
   GLfloat lum[4] = {0.0, 0.0, 5.0, 1.0};
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -94,13 +94,15 @@ void draw(void)
 
   gl4duLookAtf(0.0f, 5.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
   /* on va en dessiner "total" objets en alternant entre les 3 modèles ... */
+  assimpDrawScene(_id_modele[0]);
   for (i = 0; i < total; ++i)
   {
     gl4duPushMatrix(); /* sauver la matrice (modelViewMatrix) */
     gl4duRotatef(angle + i * (360.0f / total), 0.0f, 1.0f, 0.0f);
     gl4duTranslatef(3.0f, 0.0f, 0.0f);
     gl4duRotatef(-angle, 0.0f, 1.0f, 0.0f);
-    assimpDrawScene(_id_modele[i % nb_modeles]);
+    gl4duScalef(2.0f, 2.0f, 2.0f);
+    assimpDrawScene(_id_modele[1]);
     gl4duPopMatrix(); /* restaurer la matrice (modelViewMatrix) */
   }
 
