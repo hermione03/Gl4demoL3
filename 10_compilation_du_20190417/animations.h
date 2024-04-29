@@ -35,6 +35,7 @@ extern "C"
 
   extern void julia(int state);
   extern void credit(int state);
+  extern void chargeModels(int state);
 
   /* dans transformations.c */
   extern void transformations(int state);

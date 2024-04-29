@@ -22,7 +22,7 @@ PROGNAME = compilation
 VERSION = 1.0
 distdir = $(PROGNAME)-$(VERSION)
 HEADERS = audioHelper.h animations.h
-SOURCES = audioHelper.c animations.c window.c julia.c credit.c mix0105.c transformations.c
+SOURCES = audioHelper.c animations.c window.c julia.c models.c assimp.c credit.c mix0105.c transformations.c
 OBJ = $(SOURCES:.c=.o)
 DOXYFILE = documentation/Doxyfile
 EXTRAFILES = COPYING  $(wildcard shaders/*.?s images/*)
@@ -50,7 +50,7 @@ else
 endif
 
 CPPFLAGS += $(shell sdl2-config --cflags)
-LDFLAGS  += -lGL4Dummies $(shell sdl2-config --libs) -lSDL2_mixer -lSDL2_image
+LDFLAGS  += -lGL4Dummies $(shell sdl2-config --libs) -lSDL2_mixer -lSDL2_image -lassimp
 
 all: $(PROGNAME)
 

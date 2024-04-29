@@ -18,7 +18,7 @@ CPPFLAGS = -I.
 LDFLAGS = -lm
 # définition des fichiers et dossiers
 PACKNAME = advanced
-PROGNAME = 3dModelsLoader
+PROGNAME = 3dModels  Loader
 VERSION = 1.0
 distdir = $(PACKNAME)_$(PROGNAME)-$(VERSION)
 HEADERS = assimp.h
