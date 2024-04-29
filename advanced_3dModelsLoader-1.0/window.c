@@ -19,16 +19,17 @@ static int _windowHeight = 800;
 static GLuint _pId = 0;
 
 /*!\brief identifiant de modèles générés à partir de fichiers 3D (3dsmax, obj, ...) */
-static GLuint _id_modele[3] = { 0 };
+static GLuint _id_modele[3] = {0};
 
 static void init(void);
 static void sortie(void);
 static void resize(int w, int h);
 static void draw(void);
 
-int main(int argc, char ** argv) {
-  if(!gl4duwCreateWindow(argc, argv, "GL4Dummies", GL4DW_POS_UNDEFINED, GL4DW_POS_UNDEFINED,
-                         _windowWidth, _windowHeight, GL4DW_RESIZABLE | GL4DW_SHOWN))
+int main(int argc, char **argv)
+{
+  if (!gl4duwCreateWindow(argc, argv, "GL4Dummies", GL4DW_POS_UNDEFINED, GL4DW_POS_UNDEFINED,
+                          _windowWidth, _windowHeight, GL4DW_RESIZABLE | GL4DW_SHOWN))
     return 1;
   init();
   atexit(sortie);
@@ -38,11 +39,13 @@ int main(int argc, char ** argv) {
   return 0;
 }
 
-void init(void) {
+void init(void)
+{
   /* charger 3 modèles différents */
   _id_modele[0] = assimpGenScene("models/soccer/soccerball.obj");
   _id_modele[1] = assimpGenScene("models/nixanz.3ds");
-  _id_modele[2] = assimpGenScene("models/balloon/balloon_low.obj");  
+  // _id_modele[2] = assimpGenScene("models/balloon/balloon_low.obj");
+  _id_modele[2] = assimpGenScene("models/Projet/scene.gltf");
 
   glEnable(GL_DEPTH_TEST);
   glDisable(GL_CULL_FACE);
@@ -61,8 +64,9 @@ void init(void) {
  * \param w window width
  * \param h window height
  */
-void resize(int w, int h) {
-  _windowWidth = w; 
+void resize(int w, int h)
+{
+  _windowWidth = w;
   _windowHeight = h;
   glViewport(0, 0, _windowWidth, _windowHeight);
   gl4duBindMatrix("projectionMatrix");
@@ -72,7 +76,8 @@ void resize(int w, int h) {
   gl4duBindMatrix("modelViewMatrix");
 }
 
-void draw(void) {
+void draw(void)
+{
   int i;
   const int nb_modeles = sizeof _id_modele / sizeof *_id_modele, total = 12;
   static GLfloat angle = 0.0f;
@@ -88,15 +93,16 @@ void draw(void) {
 
   gl4duLookAtf(0.0f, 5.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
   /* on va en dessiner "total" objets en alternant entre les 3 modèles ... */
-  for(i = 0; i < total; ++i) {
+  for (i = 0; i < total; ++i)
+  {
     gl4duPushMatrix(); /* sauver la matrice (modelViewMatrix) */
-    gl4duRotatef(angle + i * (360.0f / total), 0.0f, 1.0f, 0.0f);   
+    gl4duRotatef(angle + i * (360.0f / total), 0.0f, 1.0f, 0.0f);
     gl4duTranslatef(3.0f, 0.0f, 0.0f);
     gl4duRotatef(-angle, 0.0f, 1.0f, 0.0f);
     assimpDrawScene(_id_modele[i % nb_modeles]);
     gl4duPopMatrix(); /* restaurer la matrice (modelViewMatrix) */
   }
-  
+
   /* gestion de l'angle en fonction du temps.
    *
    * L'idéal est de le mettre dans une fonction idle (simulation) ...
@@ -109,7 +115,7 @@ void draw(void) {
   }
 }
 
-void sortie(void) {
+void sortie(void)
+{
   gl4duClean(GL4DU_ALL);
 }
-
