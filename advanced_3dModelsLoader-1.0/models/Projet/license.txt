@@ -1,8 +1,0 @@
-Model Information:
-* title:	Photographer With Tripod
-* source:	https://sketchfab.com/3d-models/photographer-with-tripod-fb75bb8404fa49c0ab9ce82bf57a3d81
-* author:	imanboer (https://sketchfab.com/imanboer)
-
-Model License:
-* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
-* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
