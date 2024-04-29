@@ -1,4 +1,4 @@
-/*!\file window.c
+/*!\file wi ndow.c
  *
  * \brief utilisation de GL4Dummies et Lib Assimp pour chargement de
  * modèles 3D sous différents formats.
@@ -19,7 +19,7 @@ static int _windowHeight = 800;
 static GLuint _pId = 0;
 
 /*!\brief identifiant de modèles générés à partir de fichiers 3D (3dsmax, obj, ...) */
-static GLuint _id_modele[3] = {0};
+static GLuint _id_modele[2] = {0};
 
 static void init(void);
 static void sortie(void);
@@ -42,11 +42,11 @@ int main(int argc, char **argv)
 void init(void)
 {
   /* charger 3 modèles différents */
-  _id_modele[0] = assimpGenScene("models/soccer/soccerball.obj");
+  _id_modele[0] = assimpGenScene("models/Snapshooter/scene.gltf");
   // _id_modele[1] = assimpGenScene("models/nixanz.3ds");
   _id_modele[1] = assimpGenScene("models/police_car/scene.gltf");
-  // _id_modele[2] = assimpGenScene("models/balloon/balloon_low.obj");
-  _id_modele[2] = assimpGenScene("models/Snapshooter/scene.gltf");
+  // // _id_modele[2] = assimpGenScene("models/balloon/balloon_low.obj");
+  // _id_modele[2] = assimpGenScene("models/Snapshooter/scene.gltf");
 
   glEnable(GL_DEPTH_TEST);
   glDisable(GL_CULL_FACE);
