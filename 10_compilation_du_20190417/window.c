@@ -35,7 +35,7 @@ static GL4DHanime _animations[] = {
     {5000, transformations, mix0105, fondu},
     {5000, mix0105, NULL, NULL},
     {2000, mix0105, credit, NULL},
-    {15000, credit, NULL, NULL}, 
+    {15000, credit, NULL, NULL},
     {0, NULL, NULL, NULL} /* Toujours laisser à la fin */
 };
 
@@ -64,7 +64,7 @@ int main(int argc, char **argv)
   gl4duwKeyDownFunc(keydown);
   gl4duwDisplayFunc(gl4dhDraw);
 
-  ahInitAudio("audio/Isisip - Lotus Flower.mp3");
+  ahInitAudio("audio/final_fantasy_versus_XIII1.mid");
   gl4duwMainLoop();
   return 0;
 }
