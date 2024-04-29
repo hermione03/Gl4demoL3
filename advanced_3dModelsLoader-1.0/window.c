@@ -102,7 +102,7 @@ void draw(void)
     gl4duPushMatrix(); /* sauver la matrice (modelViewMatrix) */
     gl4duRotatef(angle + i * (360.0f / total), 0.0f, 1.0f, 0.0f);
     gl4duTranslatef(5.0f, 0.0f, 0.0f);
-    gl4duRotatef(M_PI, 0.0f, 1.0f, 0.0f);
+    gl4duRotatef(180.0f, 0.0f, 1.0f, 0.0f);
     gl4duScalef(6.0f, 6.0f, 6.0f);
     assimpDrawScene(_id_modele[1]);
     gl4duPopMatrix(); /* restaurer la matrice (modelViewMatrix) */
