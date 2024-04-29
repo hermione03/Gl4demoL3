@@ -16,12 +16,13 @@
 #define _ANIMATIONS_H
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-  extern void transition_vide(void (* a0)(int), void (* a1)(int), Uint32 t, Uint32 et, int state);
-  extern void fondu(void (* a0)(int), void (* a1)(int), Uint32 t, Uint32 et, int state);
-  extern void fondui(void (* a0)(int), void (* a1)(int), Uint32 t, Uint32 et, int state);
+  extern void transition_vide(void (*a0)(int), void (*a1)(int), Uint32 t, Uint32 et, int state);
+  extern void fondu(void (*a0)(int), void (*a1)(int), Uint32 t, Uint32 et, int state);
+  extern void fondui(void (*a0)(int), void (*a1)(int), Uint32 t, Uint32 et, int state);
   extern void bidon00(int state);
   extern void bidon01(int state);
   extern void bidon02(int state);
@@ -31,6 +32,8 @@ extern "C" {
   extern void music_fft(int state);
   extern void mix0105(int state);
   extern void earth(int state);
+
+  extern void julia(int state);
 
   /* dans transformations.c */
   extern void transformations(int state);

@@ -22,7 +22,7 @@ PROGNAME = compilation
 VERSION = 1.0
 distdir = $(PROGNAME)-$(VERSION)
 HEADERS = audioHelper.h animations.h
-SOURCES = audioHelper.c animations.c window.c mix0105.c transformations.c
+SOURCES = audioHelper.c animations.c window.c julia.c mix0105.c transformations.c
 OBJ = $(SOURCES:.c=.o)
 DOXYFILE = documentation/Doxyfile
 EXTRAFILES = COPYING  $(wildcard shaders/*.?s images/*)
