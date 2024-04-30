@@ -47,7 +47,7 @@ static GLfloat _dim[] = {1280, 900};
  */
 int main(int argc, char **argv)
 {
-  if (!gl4duwCreateWindow(argc, argv, "GL4Dummies DemoHelper",
+  if (!gl4duwCreateWindow(argc, argv, "GL4Dummies DemoMaria",
                           0, 0,
                           _dim[0], _dim[1],
                           GL4DW_RESIZABLE | /* GL4DW_FULLSCREEN | */ GL4DW_SHOWN))

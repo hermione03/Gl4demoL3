@@ -22,10 +22,10 @@ PROGNAME = compilation
 VERSION = 1.0
 distdir = $(PROGNAME)-$(VERSION)
 HEADERS = audioHelper.h animations.h
-SOURCES = audioHelper.c animations.c window.c julia.c models.c assimp.c credit.c mix0105.c transformations.c fractal.c
+SOURCES = audioHelper.c animations.c window.c julia.c models.c assimp.c credit.c fractal.c
 OBJ = $(SOURCES:.c=.o)
 DOXYFILE = documentation/Doxyfile
-EXTRAFILES = COPYING  $(wildcard shaders/*.?s images/*)
+EXTRAFILES = COPYING  $(wildcard shaders/*.?s images/* Schrodinger.ttf)
 DISTFILES = $(SOURCES) Makefile $(HEADERS) $(DOXYFILE) $(EXTRAFILES)
 
 # Traitement automatique (ne pas modifier)
