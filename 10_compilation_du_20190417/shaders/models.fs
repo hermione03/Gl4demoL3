@@ -9,6 +9,7 @@ uniform vec4 specular_color;
 uniform vec4 ambient_color;
 uniform vec4 emission_color;
 uniform float shininess;
+uniform vec4 couleur;
 
 in vec2 vsoTexCoord;
 in vec3 vsoNormal;
@@ -26,7 +27,8 @@ void main(void) {
     vec4 diffuseReflection = ambient_color*0.2 +diffuse_color * diffuse;
     fragColor = diffuseReflection + specularReflection;
     if(hasTexture != 0)
-      fragColor *= texture(myTexture, vsoTexCoord);
+        fragColor *= texture(myTexture, vsoTexCoord);
+        else fragColor *= couleur;
 }
 
 

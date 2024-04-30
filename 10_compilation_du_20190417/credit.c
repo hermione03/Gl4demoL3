@@ -60,7 +60,7 @@ static void draw(void)
     GLfloat t, d;
     if (t0 < 0.0f)
         t0 = SDL_GetTicks();
-    t = (SDL_GetTicks() - t0) / 1000.0f, d = -2.4f /* du retard pour commencer en bas */ + 0.25f /* vitesse */ * t;
+    t = (SDL_GetTicks() - t0) / 1000.0f, d = -1.8f /* du retard pour commencer en bas */ + 0.25f /* vitesse */ * t;
     glClearColor(0, 0.1, 0.1, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glDisable(GL_DEPTH_TEST);
@@ -73,7 +73,7 @@ static void draw(void)
     glUniform1i(glGetUniformLocation(_pId, "tex"), 0);
     gl4duBindMatrix("modelViewMatrix");
     gl4duLoadIdentityf();
-    gl4duScalef(1, 2, 1);
+    gl4duScalef(1, 1, 1);
     gl4duTranslatef(0, d * cos(inclinaison * M_PI / 180.0f), -2 + d * sin(inclinaison * M_PI / 180.0f));
     gl4duRotatef(inclinaison, 1, 0, 0);
     gl4duSendMatrices();
@@ -118,7 +118,7 @@ static void initText(GLuint *ptId, const char *text)
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     }
     /* chargement de la font */
-    if (!(font = TTF_OpenFont("./Schrodinger.ttf", 64)))
+    if (!(font = TTF_OpenFont("Schrodinger.ttf", 64)))
     {
         fprintf(stderr, "TTF_OpenFont: %s\n", TTF_GetError());
         return;

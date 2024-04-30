@@ -83,7 +83,6 @@ static void draw( void ) {
     // Envoi des données d'amplitude au shader
     float currentSample = ( GLfloat ) _hauteurs[currentSampleIndex];
     _amplitude_sonore = glGetUniformLocation( _pId, "amplitudeSon" );
-    // printf( "currentSample: %f\n", currentSample );
     glUniform1f( _amplitude_sonore, currentSample );
     currentSampleIndex = ( currentSampleIndex + 1 ) % ECHANTILLONS;
 
