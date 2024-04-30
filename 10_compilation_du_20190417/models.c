@@ -20,11 +20,14 @@ static int _windowWidth = 1280;
 static int _windowHeight = 900;
 /*!\brief GLSL program Id */
 static GLuint _pId = 0;
+static GLuint _quadId = 0;
+static GLuint _quadId2 = 0;
 
 static GLfloat _dim[] = {1280, 900};
 
 /*!\brief identifiant de modèles générés à partir de fichiers 3D (3dsmax, obj, ...) */
 static GLuint _id_modele[2] = {0};
+static GLuint _texId[2] = {0};
 
 
 #define ECHANTILLONS 1024
@@ -35,18 +38,6 @@ static void sortie(void);
 static void resize(int w, int h);
 static void draw(void);
 
-// static int main(int argc, char **argv)
-// {
-//   if (!gl4duwCreateWindow(argc, argv, "GL4Dummies", GL4DW_POS_UNDEFINED, GL4DW_POS_UNDEFINED,
-//                           _windowWidth, _windowHeight, GL4DW_RESIZABLE | GL4DW_SHOWN))
-//     return 1;
-//   init();
-//   atexit(sortie);
-//   gl4duwResizeFunc(resize);
-//   gl4duwDisplayFunc(draw);
-//   gl4duwMainLoop();
-//   return 0;
-// }
 
 static void init(void)
 {
@@ -54,17 +45,45 @@ static void init(void)
   _id_modele[0] = assimpGenScene("models/Snapshooter/scene.gltf");
   // _id_modele[1] = assimpGenScene("models/nixanz.3ds");
   _id_modele[1] = assimpGenScene("models/police_car/scene.gltf");
-  // // _id_modele[2] = assimpGenScene("models/balloon/balloon_low.obj");
-  // _id_modele[2] = assimpGenScene("models/Snapshooter/scene.gltf");
+  SDL_Surface * s;
 
+
+  _quadId = gl4dgGenQuadf();
+  _quadId2 = gl4dgGenQuadf();
   glEnable(GL_DEPTH_TEST);
   glDisable(GL_CULL_FACE);
 
   _pId = gl4duCreateProgram("<vs>shaders/models.vs", "<fs>shaders/models.fs", NULL);
+
   gl4duGenMatrix(GL_FLOAT, "modelViewMatrix");
   gl4duGenMatrix(GL_FLOAT, "projectionMatrix");
   glEnable(GL_CULL_FACE);
   glCullFace(GL_BACK);
+  // glGenTextures(sizeof _texId / sizeof*_texId, _texId);
+  //  /* lier l'identifiant de texture comme texture 2D (1D ou 3D
+  //  * possibles) */
+  // glBindTexture(GL_TEXTURE_2D, _texId);
+  // /* paramétrer la texture, voir la doc de la fonction glTexParameter
+  //  * sur
+  //  * https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glTexParameter.xhtml */
+  // glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  // glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+  // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+  // /* chargement de l'image logo GL4D avec une fonction native SDL2, si
+  //  * vous souhaitez charger d'autres type d'images, utilisez par
+  //  * exemple IMG_Load de la sous-bibliothèque SDL2_image */
+  // if((s = IMG_Load("models/p8.jpg"))) {
+  //     /* envoi de la donnée texture depuis la RAM CPU vers la RAM GPU voir
+  //      * la doc de glTexImage2D (voir aussi glTexImage1D et glTexImage3D)
+  //      * sur
+  //      * https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glTexImage2D.xhtml */
+  //   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, s->w, s->h, 0,
+  //        s->format->BytesPerPixel == 3 ? GL_BGR : GL_BGRA, GL_UNSIGNED_BYTE, s->pixels);
+  //   SDL_FreeSurface(s);
+  // }
+  // /* dé-lier la texture 2D */
+  // glBindTexture(GL_TEXTURE_2D, 0);
   resize(_windowWidth, _windowHeight);
 }
 
@@ -88,11 +107,13 @@ static void resize(int w, int h)
 
 static void draw(void)
 {
+  static const GLfloat rouge[] = {0.6f, 0.0f, 0.0f, 1.0f}, bleu[] = {0.0f, 0.0f, 0.6f, 1.0f},
+    lumpos[] = {-4.0f, 4.0f, 0.0f, 1.0f};
   int i;
   const int nb_modeles = sizeof _id_modele / sizeof *_id_modele, total = 3;
   static GLfloat angle = 0.0f;
-  GLfloat lum[4] = {0.0, 0.0, 5.0, 1.0};
-  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+  GLfloat lum[4] = {0.0, 0.0, 2.0, 1.0};
+  glClearColor(0.9f, 0.9f, 0.9f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glUseProgram(_pId);
 
@@ -113,9 +134,36 @@ static void draw(void)
     gl4duScalef(6.0f, 6.0f, 6.0f);
     assimpDrawScene(_id_modele[1]);
     gl4duPopMatrix(); /* restaurer la matrice (modelViewMatrix) */
-  }
+  } 
+  
+  gl4duLoadIdentityf();
+  gl4duTranslatef(0.0f, 5.0f, -30.0f);
+  gl4duRotatef(-180.0f, 1.0f, 0.0f, 0.0f);
+  gl4duScalef(12.0f, 5.0f, 10.0f);
+  gl4duSendMatrices();
+  // /* activer l'étage de textures 0, plusieurs étages sont disponibles,
+  //  * nous pouvons lier une texture par type et par étage */
+  // glActiveTexture(GL_TEXTURE0);
+  // /* lier la texture _texId comme texture 2D */
+  // glBindTexture(GL_TEXTURE_2D, _texId);
+  // /* envoyer une info au program shader indiquant que tex est une
+  //  * texture d'étage 0, voir le type (sampler2D) de la variable tex
+  //  * dans le shader */
+  // glUniform1i(glGetUniformLocation(_pId, "tex"), 0);
+  // /* envoi d'un booléen pour inverser l'axe y des coordonnées de
+  //  * textures (plus efficace à faire dans le vertex shader */
+  // glUniform1i(glGetUniformLocation(_pId, "inv"), 1) ;
+  glUniform4fv(glGetUniformLocation(_pId, "couleur") , 1, bleu);
+  gl4dgDraw(_quadId2);
 
-  /* gestion de l'angle en fonction du temps.
+  gl4duLoadIdentityf();
+  gl4duTranslatef(0.0f, -5.0f, -18.0f);
+  gl4duRotatef(-45.0f, 1.0f, 0.0f, 0.0f);
+  gl4duScalef(10.0f, 10.0f, 10.0f);
+  gl4duSendMatrices();
+  glUniform4fv(glGetUniformLocation(_pId, "couleur") , 1, rouge);
+  gl4dgDraw(_quadId);
+/* gestion de l'angle en fonction du temps.
    *
    * L'idéal est de le mettre dans une fonction idle (simulation) ...
    */

@@ -91,7 +91,7 @@ static void draw(void)
     // }
     // currentSample /= ECHANTILLONS;
     _amplitude_sonore = glGetUniformLocation(_pId, "amplitudeSon");
-    printf("currentSample: %f\n", currentSample);
+    // printf("currentSample: %f\n", currentSample);
     glUniform1f(_amplitude_sonore, currentSample);
     currentSampleIndex = (currentSampleIndex + 1) % ECHANTILLONS;
 

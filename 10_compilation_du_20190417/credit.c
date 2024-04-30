@@ -41,14 +41,13 @@ static void init(void)
              "- GL4Dummies : Fares Belhadj\n"
              "- OpenGL\n"
              "- SDL2\n\n"
-             "Developpement : Axel Labarre\n\n"
-             "Projet : Eternal Fractal Demo 64k\n\n"
+             "Developpement : Maria Messaoud-Nacer\n\n"
+             "Projet : Demo vigipirate 64k\n\n"
              "Musique :\n"
-             "- Xion - Kingdom Hearts: 358/2 Days\n\n"
+             "- final_fantasy_versus_XIII1\n\n"
              "Shaders :\n"
              "- red julia : Rodolphe Peccatte\n"
-             "- mountain : Snow Mountain - David Lovera - Unix/2015 \n"
-             "- pulse : shadertoy \n\n"
+             "- lights fractal : Ribbon Assault  - Dave_Hoskins\n"
 
              "Merci ! ");
 }
