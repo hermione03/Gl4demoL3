@@ -34,6 +34,7 @@ extern "C"
   extern void earth(int state);
 
   extern void julia(int state);
+  extern void fractal(int state);
   extern void credit(int state);
   extern void chargeModels(int state);
 
