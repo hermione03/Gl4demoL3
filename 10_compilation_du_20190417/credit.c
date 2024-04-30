@@ -46,7 +46,7 @@ static void init(void)
              "Musique :\n"
              "- final_fantasy_versus_XIII1\n\n"
              "Shaders :\n"
-             "- red julia : Rodolphe Peccatte\n"
+             "- mfa julia : Rodolphe Peccatte\n"
              "- lights fractal : Ribbon Assault  - Dave_Hoskins\n"
 
              "Merci ! ");

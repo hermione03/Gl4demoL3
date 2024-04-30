@@ -33,7 +33,7 @@ static void init(void)
     /* Création du programme shader (voir le dossier shader) */
     _pId = gl4duCreateProgram("<vs>shaders/julia.vs", "<fs>shaders/julia.fs", NULL);
     /* Set de la couleur (RGBA) d'effacement OpenGL */
-    glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(127.0f, 0.0f, 255.0f, 1.0f);
 
     _quad = gl4dgGenQuadf();
 

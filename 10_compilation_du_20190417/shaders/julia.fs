@@ -37,7 +37,7 @@ void main(void) {
     intensity *= 64.0;
 
       // Utiliser l'amplitude sonore pour ajuster la couleur
-    vec3 color = vec3(1.0 - intensity, 0.0, 0.0) * (1.0 + amp);
+    vec3 color = vec3(0.0, 0.0, 1.0 - intensity) * (1.0 + amp);
 
     // Ajouter un effet de pulsation en utilisant l'amplitude sonore
     //color += vec3(amp * sin(u_time * 4.0), amp * cos(u_time * 3.0), amp * sin(u_time * 5.0));
