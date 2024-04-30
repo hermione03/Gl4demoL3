@@ -112,12 +112,15 @@ static void draw(void)
   int i;
   const int nb_modeles = sizeof _id_modele / sizeof *_id_modele, total = 3;
   static GLfloat angle = 0.0f;
-  GLfloat lum[4] = {0.0, 0.0, 2.0, 1.0};
+  GLfloat lum[4] = {0.0, 0.0, 3.0, 1.0};
   glClearColor(0.9f, 0.9f, 0.9f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glUseProgram(_pId);
 
   glUniform4fv(glGetUniformLocation(_pId, "lumpos"), 1, lum);
+  gl4duBindMatrix("projectionMatrix");
+  gl4duLoadIdentityf();
+  gl4duFrustumf(-0.005, 0.005, -0.005 * _windowHeight / _windowWidth, 0.005 * _windowHeight / _windowWidth, 0.01, 1000.0);
 
   gl4duBindMatrix("modelViewMatrix");
   gl4duLoadIdentityf();
